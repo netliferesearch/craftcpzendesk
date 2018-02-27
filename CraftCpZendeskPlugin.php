@@ -1,20 +1,20 @@
 <?php
 /**
- * Craft CP Intercom plugin for Craft CMS
+ * Craft CP Zendesk plugin for Craft CMS
  *
- * Enable Intercom in the Control Panel
+ * Enable Zendesk in the Control Panel
  *
  *
  * @author    Knut Melvær
  * @copyright Copyright (c) 2016 Knut Melvær
  * @link      https://github.com/kmelve
- * @package   CraftCpIntercom
- * @since     1.0.1
+ * @package   CraftCpZendesk
+ * @since     1.0.0
  */
 
 namespace Craft;
 
-class CraftCpIntercomPlugin extends BasePlugin
+class CraftCpZendeskPlugin extends BasePlugin
 {
     /**
      * @return mixed
@@ -26,7 +26,7 @@ class CraftCpIntercomPlugin extends BasePlugin
       if (craft()->userSession->isLoggedIn()) {
 
         /* Get settings */
-        $intercomId = $this->settings['intercomId'];
+        $ZendeskId = $this->settings['ZendeskId'];
         $company = $this->settings['company'];
         $name = craft()->userSession->name;
         $hash = $this->settings['hash'];
@@ -41,8 +41,8 @@ class CraftCpIntercomPlugin extends BasePlugin
          *  Check if user is in a group that is checked for support.
          *  Admins will always have access.
          *  */
-        $showIntercomForUser = !$user->admin ? count(array_intersect($userGroups, $userGroupOptions)) !== 0 : true;
-        $showIntercomOnFrontend = $this->settings['controlPanel'] ? craft()->request->isCpRequest() : true;
+        $showZendeskForUser = !$user->admin ? count(array_intersect($userGroups, $userGroupOptions)) !== 0 : true;
+        $showZendeskOnFrontend = $this->settings['controlPanel'] ? craft()->request->isCpRequest() : true;
         /* Support secure_mode */
         if ($hash) {
           $emailHash = hash_hmac('sha256', $email, $hash);
@@ -51,16 +51,16 @@ class CraftCpIntercomPlugin extends BasePlugin
 
         /* Build JavaScript */
         $javascript = "
-          window.intercomSettings = {
-              app_id: '{$intercomId}',
+          window.ZendeskSettings = {
+              app_id: '{$ZendeskId}',
               name: '{$name}',
               email: '{$email}',{$emailHashParam}
               company_id: '{$company}'
             };
-            (function(){var w=window;var ic=w.Intercom;if(typeof ic==='function'){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/puws8gsr';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()";
+            (function(){var w=window;var ic=w.Zendesk;if(typeof ic==='function'){ic('reattach_activator');ic('update',ZendeskSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Zendesk=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.Zendesk.io/widget/puws8gsr';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()";
 
           /* Include JavaScript */
-          if ($intercomId && $showIntercomForUser && $showIntercomOnFrontend) {
+          if ($ZendeskId && $showZendeskForUser && $showZendeskOnFrontend) {
               craft()->templates->includeJs($javascript);
           }
       }
@@ -73,7 +73,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getName()
     {
-         return Craft::t('Craft CP Intercom');
+         return Craft::t('Craft CP Zendesk');
     }
 
     /**
@@ -84,7 +84,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getDescription()
     {
-        return Craft::t('Enable Intercom in the Control Panel');
+        return Craft::t('Enable Zendesk in the Control Panel');
     }
 
     /**
@@ -95,7 +95,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getDocumentationUrl()
     {
-        return 'https://github.com/netliferesearch/craftcpintercom/blob/master/README.md';
+        return 'https://github.com/netliferesearch/craftcpZendesk/blob/master/README.md';
     }
 
     /**
@@ -107,7 +107,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getReleaseFeedUrl()
     {
-        return 'https://raw.githubusercontent.com/netliferesearch/craftcpintercom/master/releases.json';
+        return 'https://raw.githubusercontent.com/netliferesearch/craftcpZendesk/master/releases.json';
     }
 
     /**
@@ -117,7 +117,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.0.0';
     }
 
     /**
@@ -130,7 +130,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getSchemaVersion()
     {
-        return '1.0.1';
+        return '1.0.0';
     }
 
     /**
@@ -214,9 +214,9 @@ class CraftCpIntercomPlugin extends BasePlugin
       // var_dump($userGroupOptions);
       // die();
       return array(
-          'intercomId' => array(AttributeType::String, 'label' => 'Intercom App ID', 'default' => ''),
-          'company' => array(AttributeType::String, 'label' => 'Intercom Company Id', 'default' => 'A Company'),
-          'hash' => array(AttributeType::String, 'label' => 'Intecom Secret Hash', 'default' => ''),
+          'ZendeskId' => array(AttributeType::String, 'label' => 'Zendesk App ID', 'default' => ''),
+          'company' => array(AttributeType::String, 'label' => 'Zendesk Company Id', 'default' => 'A Company'),
+          'hash' => array(AttributeType::String, 'label' => 'Zendesk Secret Hash', 'default' => ''),
           'userGroups' => array(AttributeType::Mixed, 'label' => 'User group settings', 'default' => $userGroupOptions),
           'controlPanel' => array(AttributeType::Number, 'label' => 'Show only in Control Panel', 'default' => 'true')
       );
@@ -229,7 +229,7 @@ class CraftCpIntercomPlugin extends BasePlugin
      */
     public function getSettingsHtml()
     {
-       return craft()->templates->render('craftcpintercom/CraftCpIntercom_Settings', array(
+       return craft()->templates->render('craftcpZendesk/CraftCpZendesk_Settings', array(
            'settings' => $this->getSettings()
        ));
     }

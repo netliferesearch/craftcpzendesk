@@ -1,8 +1,8 @@
 <?php
 /**
- * Craft CP Intercom plugin for Craft CMS
+ * Craft CP Zendesk plugin for Craft CMS
  *
- * CraftCpIntercom Controller
+ * CraftCpZendesk Controller
  *
  * --snip--
  * Generally speaking, controllers are the middlemen between the front end of the CP/website and your plugin’s
@@ -21,13 +21,13 @@
  * @author    Knut Melvær
  * @copyright Copyright (c) 2016 Knut Melvær
  * @link      https://github.com/kmelve
- * @package   CraftCpIntercom
+ * @package   CraftCpZendesk
  * @since     1.0.1
  */
 
 namespace Craft;
 
-class CraftCpIntercomController extends BaseController
+class CraftCpZendeskController extends BaseController
 {
 
     /**
@@ -38,7 +38,7 @@ class CraftCpIntercomController extends BaseController
         );
 
     /**
-     * Handle a request going to our plugin's index action URL, e.g.: actions/craftCpIntercom
+     * Handle a request going to our plugin's index action URL, e.g.: actions/craftCpZendesk
      */
     public function actionIndex()
     {

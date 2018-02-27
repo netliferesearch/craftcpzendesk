@@ -2,8 +2,6 @@
 
 Enable Zendesk for logged in users in the Control Panel
 
-![](./resources/screenshots/screenshot.png)
-
 ## Installation
 
 To install Craft CP Zendesk, follow these steps:

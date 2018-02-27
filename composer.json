@@ -1,6 +1,6 @@
 {
-	"name": "kmelve/craftcpintercom",
-	"description": "Enable Intercom in the Control Panel",
+	"name": "kmelve/craftcpzendesk",
+	"description": "Enable Zendesk in the Control Panel",
 	"type": "craft-plugin",
 	"authors": [
 		{

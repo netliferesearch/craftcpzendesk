@@ -1,11 +1,11 @@
 /**
- * Craft CP Intercom plugin for Craft CMS
+ * Craft CP Zendesk plugin for Craft CMS
  *
- * Craft CP IntercomWidget CSS
+ * Craft CP Zendesk JS
  *
  * @author    Knut Melvær
  * @copyright Copyright (c) 2016 Knut Melvær
  * @link      https://github.com/kmelve
- * @package   CraftCpIntercom
+ * @package   CraftCpZendesk
  * @since     1.0.1
  */

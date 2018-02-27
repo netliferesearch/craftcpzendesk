@@ -292,16 +292,16 @@
             "time": "2017-02-21T01:20:32+00:00"
         },
         {
-            "name": "intercom/intercom-php",
+            "name": "zendesk/zendesk-php",
             "version": "v3.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/intercom/intercom-php.git",
+                "url": "https://github.com/zendesk/zendesk-php.git",
                 "reference": "2dfc3e00e2aeb3d6d61d6e7f7ffab0cf051d97a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/intercom/intercom-php/zipball/2dfc3e00e2aeb3d6d61d6e7f7ffab0cf051d97a5",
+                "url": "https://api.github.com/repos/zendesk/zendesk-php/zipball/2dfc3e00e2aeb3d6d61d6e7f7ffab0cf051d97a5",
                 "reference": "2dfc3e00e2aeb3d6d61d6e7f7ffab0cf051d97a5",
                 "shasum": ""
             },
@@ -315,7 +315,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Intercom\\": [
+                    "Zendesk\\": [
                         "src"
                     ]
                 }
@@ -326,16 +326,16 @@
             ],
             "authors": [
                 {
-                    "name": "Intercom Platform Team",
-                    "homepage": "http://intercom.io"
+                    "name": "Zendesk Platform Team",
+                    "homepage": "http://zendesk.io"
                 }
             ],
-            "description": "Intercom API client built on top of Guzzle 6",
+            "description": "Zendesk API client built on top of Guzzle 6",
             "keywords": [
                 "Guzzle",
                 "api",
-                "intercom",
-                "intercom.io"
+                "zendesk",
+                "zendesk.io"
             ],
             "time": "2017-02-13T09:55:12+00:00"
         },

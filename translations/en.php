@@ -1,13 +1,13 @@
 <?php
 /**
- * Craft CP Intercom plugin for Craft CMS
+ * Craft CP Zendesk plugin for Craft CMS
  *
- * Craft CP Intercom Translation
+ * Craft CP Zendesk Translation
  *
  * @author    Knut Melvær
  * @copyright Copyright (c) 2016 Knut Melvær
  * @link      https://github.com/kmelve
- * @package   CraftCpIntercom
+ * @package   CraftCpZendesk
  * @since     1.0.1
  */
 
